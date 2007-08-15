@@ -3,7 +3,7 @@ Version:        0.0.16
 Release:        %mkrel 6
 Summary:        Manipulate files in unmounted ext2/ext3 filesystems
 
-Group:          System/Kernel and hardwar
+Group:          System/Kernel and hardware
 License:        GPL
 URL:            http://home.earthlink.net/~k_sheff/sw/e2tools/
 Source0:        http://home.earthlink.net/~k_sheff/sw/e2tools/%{name}-%{version}.tar.lzma
