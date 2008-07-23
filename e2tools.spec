@@ -1,6 +1,6 @@
 Name:           e2tools
 Version:        0.0.16
-Release:        %mkrel 6
+Release:        %mkrel 8
 Summary:        Manipulate files in unmounted ext2/ext3 filesystems
 
 Group:          System/Kernel and hardware
