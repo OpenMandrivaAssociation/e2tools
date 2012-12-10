@@ -4,8 +4,7 @@ Release:        %mkrel 10
 Summary:        Manipulate files in unmounted ext2/ext3 filesystems
 
 Group:          System/Kernel and hardware
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-License:        GPL
+License:        GPLv2
 URL:            http://home.earthlink.net/~k_sheff/sw/e2tools/
 Source0:        http://home.earthlink.net/~k_sheff/sw/e2tools/%{name}-%{version}.tar.lzma
 Source1:        e2tools-test.sh
@@ -20,7 +19,7 @@ Source8:        e2tail.1
 Source9:        e2tools.7
 Patch1:         e2tools-fedora-fixes.patch
 
-BuildRequires:  e2fsprogs-devel >= 1.27
+BuildRequires:  pkgconfig(ext2fs) >= 1.27
 
 # For e2tools-test.sh
 BuildRequires:  e2fsprogs, diffutils
@@ -41,8 +40,10 @@ The utilities are: e2cp e2ln e2ls e2mkdir e2mv e2rm e2tail
 %patch1 -p1
 
 %build
+sed -i '/e2cp_LDADD/s:-L@[^@]*@::' Makefile.in || die
+
 %configure
-%make  CPPFLAGS="-Wall -Werror"
+%make  CPPFLAGS="-Wall"
 
 
 %check
@@ -54,9 +55,8 @@ sh %{SOURCE1}
 
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-%{__install} -d $RPM_BUILD_ROOT%{_mandir}/man1/
+%{__install} -d %{buildroot}%{_mandir}/man1/
 %{__install} \
     %{SOURCE2} \
     %{SOURCE3} \
@@ -65,12 +65,11 @@ rm -rf %{buildroot}
     %{SOURCE6} \
     %{SOURCE7} \
     %{SOURCE8} \
-    $RPM_BUILD_ROOT%{_mandir}/man1/
-%{__install} -D %{SOURCE9} $RPM_BUILD_ROOT%{_mandir}/man7/e2tools.7
+    %{buildroot}%{_mandir}/man1/
+%{__install} -D %{SOURCE9} %{buildroot}%{_mandir}/man7/e2tools.7
 
 
 %files
-%defattr(-,root,root,-)
 %doc README ChangeLog TODO AUTHORS
 %{_bindir}/e2cp
 %{_bindir}/e2ln
