@@ -5,7 +5,7 @@ Summary:        Manipulate files in unmounted ext2/ext3 filesystems
 
 Group:          System/Kernel and hardware
 License:        GPLv2
-URL:            http://home.earthlink.net/~k_sheff/sw/e2tools/
+URL:            https://home.earthlink.net/~k_sheff/sw/e2tools/
 Source0:        http://home.earthlink.net/~k_sheff/sw/e2tools/%{name}-%{version}.tar.lzma
 Source1:        e2tools-test.sh
 # Thank you very much for the man pages from Debian package.
