@@ -19,6 +19,11 @@ Source8:        e2tail.1
 Source9:        e2tools.7
 Patch1:         e2tools-fedora-fixes.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  pkgconfig(ext2fs) >= 1.27
 
 # For e2tools-test.sh
